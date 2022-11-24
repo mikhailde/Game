@@ -16,15 +16,25 @@ CURSOR_UP_ONE = '\x1b[1A'
 # titles.house()
 
 # text.database('name')
-# name = input()
-# system('clear')
+name = input()
+system('clear')
 
-# text.database('house', name)
+text.database('house', name)
 text.database('choice_1')
 choice = input()
 print(CURSOR_UP_ONE, end="")
 text.database(choice=choice)
-text.database('note_', inven={'Записка': 'Wo früher das Kloster stand, aber nur eine Nonne blieb', 'Лупа': 'Просто лупа'})
+
+text.database('note_', inven={'Записка': '''Wo früher das Kloster stand, aber nur eine Nonne blieb
+         Там где монастырь раньше стоял, но осталась только монашка''', 'Лупа': 'Просто лупа'})
+
+text.choose_location()
+choice = input()
+while not choice.isdigit() or choice not in ['\x18','\x1b']: choice = input('Неверный ввод\n')
+print(CURSOR_UP_ONE, end="")
+text.database(choice=choice)
+
+
 
 
 while True:
