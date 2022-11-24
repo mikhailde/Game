@@ -34,7 +34,6 @@ def inv(location = False):
         print(f'-- {k}: {v}\n')
     getpass.getpass(prompt='')
     system('clear')
-    print(prelastkey,lastkey)
     if location: choose_location()
     else:
         database(lastkey,f=False)
@@ -130,4 +129,3 @@ def database(key='', name='', choice=0, f=True, inven = {}, location=False):
                 else:
                     getpass.getpass(prompt='')
             a_update += 1
-            print('ok')
