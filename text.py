@@ -8,29 +8,50 @@ inventory = {}
 lastkey = 'start'
 prelastkey = 'start'
 localname = ''
+a_update = 0
 
+
+def choose_location():
+    print('''Выберите действие:
+[1] Перейти на главную площадь
+[2] Перейти на детскую площадку
+[3] Перейти на тёмный угол за каким-то клубом
+[4] Перейти на старая площадь, которая уже заросла
+
+Просмотреть инвентарь (Ctrl+X)''')
 
 def inv():
     global inventory, lastkey, prelastkey, localname
     print('Ваш инвентарь: ')
-    for k, v in inventory:
-        print(k,v)
+    for k, v in inventory.items():
+        print(f'-- {k}: {v}\n')
     getpass.getpass(prompt='')
     system('clear')
-    database(prelastkey, name=localname, f=False)
-    database(lastkey, f=False)
+    if prelastkey != 'start':
+        database(prelastkey, name=localname, f=False)
+        database(lastkey, f=False)
+    else: choose_location()
     choice = input()
     print(CURSOR_UP_ONE)
     database(choice=choice)
 
 
 def database(key='', name='', choice=0, f=True, inven = {}):
-    global lastkey, prelastkey, localname, inventory
+    global lastkey, prelastkey, localname, inventory, a_update
     if name != '':
         localname = name
     if inven:
         inventory |= inven
-    a = {0: 'name', 1: 'house_1', 2: 'house_2'}
+    a = {}
+    if a_update == 0:
+        #a[0] = 'name'
+        a[1] = 'house_1'
+        a[2] = 'house_2'
+    if a_update == 1:
+        a[1] = 'square'
+        a[2] = 'playground'
+        a[3] = 'dark_corner'
+        a[4] = 'old_square'
     d = {
         'start': '''В богом забытой деревушке, несущая название “bloody valley” завёлся необычный житель.*
 Его волосы цвета угля, его готический стиль, да и эта бледная кожа! Брр!*
@@ -53,7 +74,7 @@ def database(key='', name='', choice=0, f=True, inven = {}):
         'house_1': '''Фрод: Да как так то...*''',
         'house_2': '''Фрод: Да как так то...*''',
         'note_': '''Фрод: У меня есть записка, которая может тебе помочь в расследовании и лупа, держи*
-Получено: записка, лупа*'''
+Получено: записка, лупа*\n'''
     }
     flag = True
     for i in ['name', '_']:
@@ -76,6 +97,8 @@ def database(key='', name='', choice=0, f=True, inven = {}):
     else:
         if choice == '\x18':
             inv()
+        if choice == '\x1b':
+            exit()
         else:
             for i in d[a[int(choice)]]:
                 if i != "*":
@@ -84,3 +107,6 @@ def database(key='', name='', choice=0, f=True, inven = {}):
                     sys.stdout.flush()
                 else:
                     getpass.getpass(prompt='')
+            a_update += 1
+            print('ok')
+            
