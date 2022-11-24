@@ -5,24 +5,27 @@ from os import system
 CURSOR_UP_ONE = '\x1b[1A'
 
 
-titles.bloody_valley()
+# titles.bloody_valley()
 
-text.database('start')
+# text.database('start')
 
-game_map.char(1)
-for i in range(2):
-    game_map.char(2)
+# game_map.char(1)
+# for i in range(2):
+#     game_map.char(2)
 
-titles.house()
+# titles.house()
 
-text.database('name')
-name = input()
-system('clear')
+# text.database('name')
+# name = input()
+# system('clear')
 
-text.database('house', name)
+# text.database('house', name)
 text.database('choice_1')
 choice = input()
+print(CURSOR_UP_ONE, end="")
 text.database(choice=choice)
+text.database('note_', inven={'Записка': 'Wo früher das Kloster stand, aber nur eine Nonne blieb', 'Лупа': 'Просто лупа'})
+
 
 while True:
     location = input('[1]\n[2]\n[3]\n[4]\n[5]\n[6]\n[0] - выход\nВведите локацию: ')
