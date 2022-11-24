@@ -12,6 +12,7 @@ lastkey = 'start'
 prelastkey = 'start'
 localname = ''
 a_update = 0
+prechoice = 0
 
 
 def choose_location():
@@ -109,7 +110,10 @@ def database(key='', name='', choice=0, f=True, inven = {}, location=False):
                 return 0
             if choice == '\x1b':
                 exit()
-            game_map.char(choice)  
+            if prechoice != 0:
+                game_map.char(int(prechoice))
+            else: game_map.char(0)
+            for i in range(2): game_map.char(int(choice))
             titles.choose_title(choice)
             a[choice]()
         else:
@@ -127,4 +131,3 @@ def database(key='', name='', choice=0, f=True, inven = {}, location=False):
                     getpass.getpass(prompt='')
             a_update += 1
             print('ok')
-            
