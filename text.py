@@ -1,5 +1,8 @@
 import sys
 import getpass
+import game_map
+import titles
+import locations
 from os import system
 from time import sleep
 CURSOR_UP_ONE = '\x1b[1A'
@@ -19,24 +22,28 @@ def choose_location():
 [4] Перейти на старая площадь, которая уже заросла
 
 Просмотреть инвентарь (Ctrl+X)''')
+    choice = input()
+    print(CURSOR_UP_ONE)
+    database(choice=choice, location=True)
 
-def inv():
+def inv(location = False):
     global inventory, lastkey, prelastkey, localname
     print('Ваш инвентарь: ')
     for k, v in inventory.items():
         print(f'-- {k}: {v}\n')
     getpass.getpass(prompt='')
     system('clear')
-    if prelastkey != 'start':
-        database(prelastkey, name=localname, f=False)
-        database(lastkey, f=False)
-    else: choose_location()
-    choice = input()
-    print(CURSOR_UP_ONE)
-    database(choice=choice)
+    print(prelastkey,lastkey)
+    if location: choose_location()
+    else:
+        database(lastkey,f=False)
+        choice = input()
+        print(CURSOR_UP_ONE, end="")
+        database(choice=choice)
+    
 
 
-def database(key='', name='', choice=0, f=True, inven = {}):
+def database(key='', name='', choice=0, f=True, inven = {}, location=False):
     global lastkey, prelastkey, localname, inventory, a_update
     if name != '':
         localname = name
@@ -48,10 +55,10 @@ def database(key='', name='', choice=0, f=True, inven = {}):
         a[1] = 'house_1'
         a[2] = 'house_2'
     if a_update == 1:
-        a[1] = 'square'
-        a[2] = 'playground'
-        a[3] = 'dark_corner'
-        a[4] = 'old_square'
+        a[1] = locations.square
+        a[2] = locations.playground
+        a[3] = locations.dark_corner
+        a[4] = locations.old_square
     d = {
         'start': '''В богом забытой деревушке, несущая название “bloody valley” завёлся необычный житель.*
 Его волосы цвета угля, его готический стиль, да и эта бледная кожа! Брр!*
@@ -95,11 +102,22 @@ def database(key='', name='', choice=0, f=True, inven = {}):
             prelastkey = lastkey
             lastkey = key
     else:
-        if choice == '\x18':
-            inv()
-        if choice == '\x1b':
-            exit()
+        if location:
+            if choice == '\x18':
+                print('true')
+                inv(location=True)
+                return 0
+            if choice == '\x1b':
+                exit()
+            game_map.char(choice)  
+            titles.choose_title(choice)
+            a[choice]()
         else:
+            if choice == '\x18':
+                inv()
+                return 0
+            if choice == '\x1b':
+                exit() 
             for i in d[a[int(choice)]]:
                 if i != "*":
                     sleep(0.033)
