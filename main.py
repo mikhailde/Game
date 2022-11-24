@@ -19,7 +19,7 @@ for i in range(2): game_map.char(2)
 
 titles.house()
 
-text.database('name')
+text.database(choice=0)
 name = input()
 system('clear')
 

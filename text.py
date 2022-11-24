@@ -8,7 +8,7 @@ cnt = 0
 
 def database(key = '', name = '', choice = 0):
     global cnt
-    a = {1:'house_1', 2:'house_2'}
+    a = {0:'name',1:'house_1', 2:'house_2'}
     d = {
         'start':'''В богом забытой деревушке, несущая название “bloody valley” завёлся необычный житель.*
 Его волосы цвета угля, его готический стиль, да и эта бледная кожа! Брр!*
@@ -34,8 +34,8 @@ def database(key = '', name = '', choice = 0):
     flag = True
     for i in ['name','_']:
         if i in key or key == '': flag = False
-    if flag: system('clear')
-    if choice == 0:
+    if flag:
+        system('clear')
         for i in d[key]:
             if i != "*":
                 sleep(0.033)
