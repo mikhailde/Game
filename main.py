@@ -5,17 +5,17 @@ from os import system
 CURSOR_UP_ONE = '\x1b[1A'
 
 
-# titles.bloody_valley()
+titles.choose_title('bloody')
 
-# text.database('start')
+text.database('start')
 
-# game_map.char(1)
-# for i in range(2):
-#     game_map.char(2)
+game_map.char(1)
+for i in range(2):
+    game_map.char(2)
 
-# titles.house()
+titles.choose_title('house')
 
-# text.database('name')
+text.database('name')
 name = input()
 system('clear')
 
@@ -29,10 +29,6 @@ text.database('note_', inven={'Записка': '''Wo früher das Kloster stand,
          Там где монастырь раньше стоял, но осталась только монашка''', 'Лупа': 'Просто лупа'})
 
 text.choose_location()
-choice = input()
-while not choice.isdigit() or choice not in ['\x18','\x1b']: choice = input('Неверный ввод\n')
-print(CURSOR_UP_ONE, end="")
-text.database(choice=choice)
 
 
 
