@@ -1,14 +1,9 @@
-
 import game_map
 import titles
 import text
 from os import system
 CURSOR_UP_ONE = '\x1b[1A'
 
-
-inventory = []
-def inventory():
-    return inventory
 
 titles.bloody_valley()
 
@@ -19,14 +14,13 @@ for i in range(2): game_map.char(2)
 
 titles.house()
 
-text.database(choice=0)
+text.database('name')
 name = input()
 system('clear')
 
 text.database('house',name)
 text.database('choice_1')
-choice = int(input())
-print(CURSOR_UP_ONE, end="")
+choice = input()
 text.database(choice=choice)
 
 while True:

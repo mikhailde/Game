@@ -4,11 +4,29 @@ from os import system
 from time import sleep
 CURSOR_UP_ONE = '\x1b[1A' 
 ERASE_LINE = '\x1b[2K'
-cnt = 0
+inventory = ['123','321']
+lastkey = 'start'
+prelastkey = 'start'
+localname = ''
 
-def database(key = '', name = '', choice = 0):
-    global cnt
-    a = {0:'name',1:'house_1', 2:'house_2'}
+
+def inv():
+    global inventory, lastkey, prelastkey, localname
+    print('Ваш инвентарь: ')
+    for i in inventory: print(i)
+    getpass.getpass(prompt='')
+    system('clear')
+    database(prelastkey, name=localname, f=False)
+    database(lastkey, f=False)
+    choice = input()
+    print(CURSOR_UP_ONE)
+    database(choice=choice)
+
+
+def database(key='', name='', choice=0, f=True):
+    global lastkey, prelastkey, localname
+    if name != '': localname = name
+    a = {0:'name', 1:'house_1', 2:'house_2'}
     d = {
         'start':'''В богом забытой деревушке, несущая название “bloody valley” завёлся необычный житель.*
 Его волосы цвета угля, его готический стиль, да и эта бледная кожа! Брр!*
@@ -32,10 +50,10 @@ def database(key = '', name = '', choice = 0):
     'house_2':'''Фрод: Да как так то...*'''
     }
     flag = True
-    for i in ['name','_']:
+    for i in ['name', '_']:
         if i in key or key == '': flag = False
-    if flag:
-        system('clear')
+    if flag: system('clear')
+    if choice == 0:
         for i in d[key]:
             if i != "*":
                 sleep(0.033)
@@ -44,14 +62,17 @@ def database(key = '', name = '', choice = 0):
             else:
                 getpass.getpass(prompt='')
                 print(CURSOR_UP_ONE, end="")
+        if f:
+            prelastkey = lastkey
+            lastkey = key
     else:
-        for i in d[a[choice]]:
-            if i != "*":
-                sleep(0.033)
-                sys.stdout.write(i)
-                sys.stdout.flush()
-            else:
-                getpass.getpass(prompt='')
-                print(CURSOR_UP_ONE, end="")
-    
-    
+        if choice == '\x18': inv()
+        else:
+            for i in d[a[int(choice)]]:
+                if i != "*":
+                    sleep(0.033)
+                    sys.stdout.write(i)
+                    sys.stdout.flush()
+                else:
+                    getpass.getpass(prompt='')
+                    print(CURSOR_UP_ONE, end="")
