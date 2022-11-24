@@ -9,9 +9,9 @@ titles.choose_title('bloody')
 
 text.database('start')
 
-game_map.char(1)
+game_map.char(-1)
 for i in range(2):
-    game_map.char(2)
+    game_map.char(0)
 
 titles.choose_title('house')
 
