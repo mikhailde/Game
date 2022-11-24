@@ -2,6 +2,17 @@ from os import system
 from time import sleep
 
 
+def choose_title(choice):
+	d = {
+		'bloody': bloody_valley,
+		'house': house#,
+		#1: square,
+		#2: playground,
+		#3: dark_corner,
+		#4: old_square
+	}
+	d[choice]()
+
 def bloody_valley():
 	img = [['.' for x in range(125)] for y in range(21)]
 	
