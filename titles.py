@@ -2,17 +2,6 @@ from os import system
 from time import sleep
 
 
-def choose_title(choice):
-	d = {
-		'bloody': bloody_valley,
-		'house': house#,
-		#1: square,
-		#2: playground,
-		#3: dark_corner,
-		#4: old_square
-	}
-	d[choice]()
-
 def bloody_valley():
 	img = [['.' for x in range(125)] for y in range(21)]
 	
@@ -62,3 +51,39 @@ def house():
 		sleep(0.025)
 	sleep(3)
 	system('clear')
+
+def square():
+	img = [['.' for x in range(125)] for y in range(21)]
+
+	x1 = {5:  [11,12,13,14,            19,                        28,               34,35,36,37,         40,   42,                  48,                     55,56,57,58]}
+	x2 = {6:  [11,                  18,   20,                  27,   29,            34,      37,         40,   42,               47,   49,                  55,      58]}
+	x3 = {7:  [11,               17,18,   20,21,            26,27,28,29,30,         34,35,36,            40,41,42,            46,47,48,49,50,                  56,57,58]}
+	x4 = {8:  [11,            16,17,         21,22,      25,26,         30,31,      34,      37,         40,   42,         45,46,         50,51,            55,      58]}
+	x5 = {9:  [11,            16,               22,      25,               31,      34,35,36,37,         40,   42,         45,               51,         54,         58]}
+	
+	x6 =  {11:[51,52,53,54,               59,                     66,67,68,         72,   74,   76,                     83,                           92,                  98,]}
+	x7 =  {12:[51,      54,            58,   60,               65,         69,      72,   74,   76,                  82,   84,                     91,   93,               98,]}
+	x8 =  {13:[51,      54,         57,58,   60,61,            65,         69,      72,   74,   76,               81,82,83,84,85,               90,91,   93,94,            98,99,100,]}
+	x9 =  {14:[51,      54,      56,57,         61,62,         65,         69,      72,73,74,75,76,77,         80,81,         85,86,            90,         94,            98,   100,]}
+	x10 = {15:[51,      54,      56,               62,            66,67,68,                        77,         80,               86,         89,90,91,92,93,94,95,         98,99,100,]}
+	d = x1 | x2 | x3 | x4 | x5 | x6 | x7 | x8 | x9 | x10
+	for y in d:
+		for x in d[y]:
+			if x in range(0, 125):
+				img[y][x] = '█'
+	for y in img:
+		print(''.join(y))
+		sleep(0.025)
+	sleep(3)
+	system('clear')
+
+def choose_title(choice):
+	d = {
+		'bloody': bloody_valley,
+		'house': house,
+		1: square#,
+		#2: playground,
+		#3: dark_corner,
+		#4: old_square
+	}
+	d[int(choice)]()
