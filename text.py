@@ -22,7 +22,8 @@ def choose_location():
 [3] Перейти на тёмный угол за каким-то клубом
 [4] Перейти на старая площадь, которая уже заросла
 
-Просмотреть инвентарь (Ctrl+X)''')
+Просмотреть инвентарь (Ctrl+X)
+Выйти из игры (ESC)''')
     choice = input()
     print(CURSOR_UP_ONE)
     database(choice=choice, location=True)
