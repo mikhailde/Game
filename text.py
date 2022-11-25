@@ -115,7 +115,7 @@ def database(key='', name='', choice=0, f=True, inven = {}, location=False):
             else: game_map.char(0)
             for i in range(2): game_map.char(int(choice))
             titles.choose_title(choice)
-            a[choice]()
+            a[int(choice)]()
         else:
             if choice == '\x18':
                 inv()
