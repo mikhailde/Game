@@ -15,18 +15,7 @@ a_update = 0
 prechoice = 0
 
 
-def choose_location():
-    print('''Выберите действие:
-[1] Перейти на главную площадь
-[2] Перейти на детскую площадку
-[3] Перейти на тёмный угол за каким-то клубом
-[4] Перейти на старая площадь, которая уже заросла
 
-Просмотреть инвентарь (Ctrl+X)
-Выйти из игры (ESC)''')
-    choice = input()
-    print(CURSOR_UP_ONE)
-    database(choice=choice, location=True)
 
 def inv(location = False):
     global inventory, lastkey, prelastkey, localname
@@ -35,7 +24,7 @@ def inv(location = False):
         print(f'-- {k}: {v}\n')
     getpass.getpass(prompt='')
     system('clear')
-    if location: choose_location()
+    if location: locations.choose_location()
     else:
         database(lastkey,f=False)
         choice = input()
@@ -55,11 +44,13 @@ def database(key='', name='', choice=0, f=True, inven = {}, location=False):
         #a[0] = 'name'
         a[1] = 'house_1'
         a[2] = 'house_2'
+        if choice == '1': partner = False
+        if choice == '2': partner = True
     if a_update == 1:
-        a[1] = locations.square
-        a[2] = locations.playground
-        a[3] = locations.dark_corner
-        a[4] = locations.old_square
+        a[1] = locations.square(localname)
+        a[2] = locations.playground(localname)
+        a[3] = locations.dark_corner(localname)
+        a[4] = locations.old_square(localname,partner)
     d = {
         'start': '''В богом забытой деревушке, несущая название “bloody valley” завёлся необычный житель.*
 Его волосы цвета угля, его готический стиль, да и эта бледная кожа! Брр!*
