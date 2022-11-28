@@ -7,7 +7,7 @@ CURSOR_UP_ONE = '\x1b[1A'
 
 
 titles.bloody_valley()
-text.database('start')
+text.database('start_')
 game_map.char(-1)
 for i in range(2): game_map.char(0)
 titles.house()
