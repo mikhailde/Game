@@ -4,6 +4,9 @@ import getpass
 import titles
 from time import sleep
 from os import system
+from sys import platform
+if platform == 'linux': clear = system('clear')
+if platform == 'win32': clear = system('cls')
 CURSOR_UP_ONE = '\x1b[1A'
 partner = False
 nun = False
@@ -20,7 +23,7 @@ def choose_location(name='',part = ''):
         '3': dark_corner,
         '4': old_square,
     }
-    system('clear')
+    clear
     print('''Выберите действие:
 [1] Перейти на главную площадь
 [2] Перейти на детскую площадку
@@ -48,32 +51,32 @@ def output(text):
 
 def square():
     titles.square()
-    system('clear')
+    clear
     if nun == False:
         output('Тут нечего делать*')
-        system('clear')
+        clear
         choose_location()
 
 def playground():
     titles.playground()
-    system('clear')
+    clear
     if nun == False:
         output('Тут нечего делать*')
-        system('clear')
+        clear
         choose_location()
 
 def dark_corner():
     titles.dark_corner()
-    system('clear')
+    clear
     if nun == False:
         output('Тут нечего делать*')
-        system('clear')
+        clear
         choose_location()
     
 def old_square():
     global localname, partner, nun
     titles.old_square()
-    system('clear')
+    clear
     a = {}
     d = {
     'text':  f'''Вы встретили монашку*

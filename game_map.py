@@ -1,5 +1,8 @@
 from os import system
 from time import sleep
+from sys import platform
+if platform == 'linux': clear = system('clear')
+if platform == 'win32': clear = system('cls')
 
 
 def map_image():
@@ -57,10 +60,10 @@ def char(location):
 	x6 = {17 - b: [x for x in range(11 + a, 14 + a)]}
 	x7 = {y - b: [11 + a - (y - 18), 14 + a] for y in range(18, 20)}
 	
-	system('clear')
+	clear
 	for y in image(img, x1 | x2 | x3 | x4 | x5 | x6 | x7, True): print(''.join(y))
 	sleep(0.5)
-	system('clear')
+	clear
 	
 	# ==============Head==============
 	x1 = {y - b: [x for x in range(11 + a, 14 + a)] for y in range(10, 13, 2)}
@@ -75,4 +78,4 @@ def char(location):
 	
 	for y in image(img, x1 | x2 | x3 | x4 | x5 | x6 | x7, True): print(''.join(y))
 	sleep(0.5)
-	system('clear')
+	clear

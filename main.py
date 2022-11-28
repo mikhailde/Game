@@ -3,6 +3,9 @@ import titles
 import text
 import locations
 from os import system
+from sys import platform
+if platform == 'linux': clear = system('clear')
+if platform == 'win32': clear = system('cls')
 CURSOR_UP_ONE = '\x1b[1A'
 
 
@@ -13,7 +16,7 @@ for i in range(2): game_map.char(0)
 titles.house()
 text.database('name_')
 name = input()
-system('clear')
+clear
 text.database('house', name)
 text.database('choice-1')
 choice = input()

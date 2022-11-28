@@ -3,6 +3,9 @@ import getpass
 import locations
 from time import sleep
 from os import system
+from sys import platform
+if platform == 'linux': clear = system('clear')
+if platform == 'win32': clear = system('cls')
 CURSOR_UP_ONE = '\x1b[1A'
 ERASE_LINE = '\x1b[2K'
 inventory = {}
@@ -64,7 +67,7 @@ def database(key='', name = '', choice=0, inven = {}):
     if inv: inventory |= inven
     flag = False
     if '_' in key: flag = True
-    if flag: system('clear')
+    if flag: clear
     if choice == 0: output(text[key])
     else:
         if choice == '1': partner = False

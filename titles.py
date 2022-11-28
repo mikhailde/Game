@@ -1,5 +1,8 @@
 from os import system
 from time import sleep
+from sys import platform
+if platform == 'linux': clear = system('clear')
+if platform == 'win32': clear = system('cls')
 
 
 def bloody_valley():
@@ -25,7 +28,7 @@ def bloody_valley():
 		print(''.join(y))
 		sleep(0.025)
 	sleep(3)
-	system('clear')
+	clear
 
 def house():
 	img = [['.' for x in range(125)] for y in range(21)]
@@ -50,7 +53,7 @@ def house():
 		print(''.join(y))
 		sleep(0.025)
 	sleep(3)
-	system('clear')
+	clear
 
 def square():
 	img = [['.' for x in range(125)] for y in range(21)]
@@ -75,7 +78,7 @@ def square():
 		print(''.join(y))
 		sleep(0.025)
 	sleep(3)
-	system('clear')
+	clear
 
 def playground():
 	img = [['.' for x in range(125)] for y in range(21)]
@@ -100,7 +103,7 @@ def playground():
 		print(''.join(y))
 		sleep(0.025)
 	sleep(3)
-	system('clear')
+	clear
 
 def dark_corner():
 	img = [['.' for x in range(125)] for y in range(21)]
@@ -125,7 +128,7 @@ def dark_corner():
 		print(''.join(y))
 		sleep(0.025)
 	sleep(3)
-	system('clear')
+	clear
 
 def old_square():
 	img = [['.' for x in range(125)] for y in range(21)]
@@ -150,4 +153,4 @@ def old_square():
 		print(''.join(y))
 		sleep(0.025)
 	sleep(3)
-	system('clear')
+	clear
