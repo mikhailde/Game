@@ -151,14 +151,3 @@ def old_square():
 		sleep(0.025)
 	sleep(3)
 	system('clear')
-
-def choose_title(choice):
-	d = {
-		'bloody': bloody_valley,
-		'house': house,
-		'1': square,
-		'2': playground,
-		'3': dark_corner,
-		'4': old_square
-	}
-	d[choice]()
