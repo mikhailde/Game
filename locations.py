@@ -71,7 +71,7 @@ def dark_corner():
         choose_location()
     
 def old_square():
-    global localname, partner
+    global localname, partner, nun
     titles.old_square()
     system('clear')
     a = {}
@@ -134,4 +134,3 @@ def old_square():
             output(d['success'])
             nun = True
             choose_location()
-
