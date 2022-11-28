@@ -58,8 +58,7 @@ def char(location):
 	x7 = {y - b: [11 + a - (y - 18), 14 + a] for y in range(18, 20)}
 	
 	system('clear')
-	for y in image(img, x1 | x2 | x3 | x4 | x5 | x6 | x7, True):
-		print(''.join(y))
+	for y in image(img, x1 | x2 | x3 | x4 | x5 | x6 | x7, True): print(''.join(y))
 	sleep(0.5)
 	system('clear')
 	
@@ -74,7 +73,6 @@ def char(location):
 	x6 = {17 - b: [x for x in range(11 + a, 14 + a)]}
 	x7 = {y - b: [11 + a, 14 + a + (y - 18)] for y in range(18, 20)}
 	
-	for y in image(img, x1 | x2 | x3 | x4 | x5 | x6 | x7, True):
-		print(''.join(y))
+	for y in image(img, x1 | x2 | x3 | x4 | x5 | x6 | x7, True): print(''.join(y))
 	sleep(0.5)
 	system('clear')
