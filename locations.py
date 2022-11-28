@@ -113,13 +113,14 @@ def old_square():
 Ну после вас сюда приехал ещё один человек…*
 Он со светлыми волосами, с таким же готическим стилем и он вроде певец у нас на концерте…*
 ''',
-    'success': 'Вы получили необходимую информацию',
-    'failure': 'Вы не смогли получить необходимую информацию'
+    'success': 'Вы получили необходимую информацию*',
+    'failure': 'Вы не смогли получить необходимую информацию*'
 }
     output(d['text'])
     if partner: output(d['choice_1'])
     else: output(d['choice_2'])
     choice = input()
+    print(CURSOR_UP_ONE, end="")
     if partner and choice == '1':
         output(d['result_1'])
         output(d['success'])
@@ -128,6 +129,7 @@ def old_square():
     elif partner and choice == '2' or choice == '1':
         output(d['choice_2_1'])
         choice = input()
+        print(CURSOR_UP_ONE, end="")
         if choice == '1':
             output(d['result_2_1_1'])
             output(d['failure'])
