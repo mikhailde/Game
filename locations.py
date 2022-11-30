@@ -69,7 +69,7 @@ def choose_location(name='',part = '',inv = {}):
 def square():
     titles.square()
     system(clr)
-    if nun == False and keys == False:
+    if nun == False or keys == False:
         output('Тут нечего делать*')
         system(clr)
         choose_location()
@@ -78,7 +78,7 @@ def playground():
     titles.playground()
     system(clr)
     d = {}
-    if nun == False and keys == False:
+    if nun == False or keys == False:
         output('Тут нечего делать*')
         system(clr)
         choose_location()
@@ -113,7 +113,7 @@ def dark_alley():
 {localname}: Конечно бесполезный обмен, ибо я даже не знаю что у вас, но в какой-то мере он логичный!* 
 "Детектив улыбнулся во все 32 зуба, дабы показать свои добрые намерения (плохо выходит)"* 
 Продавщица: " скептически уже осмотрела лупу, а потом детектива " Ладно, ты не глупый.*
-Продавщица: Держи ключи, они остались от квартиры того светловолосого парня*
+Продавщица: Держи ключи, они остались от того светловолосого парня*
 ''',
     'success': '''Вы получили ключи с брелком*
 ''',
