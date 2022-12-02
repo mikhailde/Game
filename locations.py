@@ -35,7 +35,7 @@ def error():
     print(ERASE_LINE, CURSOR_UP_ONE, ERASE_LINE, end='', sep='')
 
 def choose_location(name='',part = '',inv = {}):
-    global partner, inventory, location
+    global partner, inventory, location, localname
     if part != '': partner = part
     if name != '': localname = name
     if inv: inventory |= inv
