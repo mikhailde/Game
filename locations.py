@@ -35,7 +35,7 @@ def error():
     print(ERASE_LINE, CURSOR_UP_ONE, ERASE_LINE, end='', sep='')
 
 def choose_location(name='',part = '',inv = {}):
-    global localname, partner, inventory, location
+    global partner, inventory, location
     if part != '': partner = part
     if name != '': localname = name
     if inv: inventory |= inv
@@ -247,7 +247,7 @@ def playground():
 
 
 def dark_alley():
-    global localname, partner, nun, keys, inventory
+    global keys, inventory
     titles.dark_alley()
     system(clr)
     d = {
@@ -317,7 +317,7 @@ def dark_alley():
                 choose_location()
     
 def old_square():
-    global localname, partner, nun
+    global nun
     titles.old_square()
     system(clr)
     d = {

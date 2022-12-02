@@ -24,7 +24,7 @@ def output(text):
             print(CURSOR_UP_ONE, end="")
 
 def inv(inv = {}):
-    global inventory, localname, partner
+    global inventory
     if inv: inventory = inv
     print('Ваш инвентарь: ')
     for k, v in inventory.items(): print(f'-- {k}: {v}\n')
