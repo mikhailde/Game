@@ -2,7 +2,7 @@
 <br />
 <div align="center">
 
-  <h3 align="center">Игра на Python Bloody Valley</h3>
+  <h3 align="center">Игра на Python "Bloody Valley"</h3>
 
   <p align="center">
     Данная игра была разработана как учебный проект в виде последовательного прохождения в текстовом формате.
